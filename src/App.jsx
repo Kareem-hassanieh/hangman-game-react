@@ -3,7 +3,11 @@ import Header from './components/Header';
 import Figure from './components/Figure';
 import WrongLetters from './components/WrongLetters';
 import Word from './components/Word';
+import Notification from './components/Notification';
+import Popup from './components/Popup';
 import './App.css'
+import { showNotification as show, showNotification } from './helpers/helpers';
+
 
 const words = ['application', 'programming', 'interface', 'wizard'];
 
@@ -27,13 +31,13 @@ function App() {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters(currentLetters => [...currentLetters, letter]);
           } else {
-          //ec
+          show(setShowNotification)
           }
         } else {
           if (!wrongLetters.includes(letter)) {
             setWrongLetters(currentLetters => [...currentLetters, letter]);
           } else {
-            //
+            show(setShowNotification)
           }
         }
       }
@@ -52,6 +56,9 @@ function App() {
         <Figure wrongLetters={wrongLetters} />
         <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+        <Popup/>
+        <Notification showNotification={showNotification}/>
+
       </div>
       
     </>
