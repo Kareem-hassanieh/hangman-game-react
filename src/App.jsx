@@ -9,10 +9,6 @@ const words = ['application', 'programming', 'interface', 'wizard'];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
 
-let playable = true;
-
-const correctLetters = [];
-const wrongLetters = [];
 
 
 
@@ -31,13 +27,13 @@ function App() {
           if (!correctLetters.includes(letter)) {
             setCorrectLetters(currentLetters => [...currentLetters, letter]);
           } else {
-            
+          //ec
           }
         } else {
           if (!wrongLetters.includes(letter)) {
             setWrongLetters(currentLetters => [...currentLetters, letter]);
           } else {
-          
+            //
           }
         }
       }
@@ -48,13 +44,15 @@ function App() {
   }, [correctLetters, wrongLetters, playable]);
 
 
+
   return (
     <>
-    <Header />
-    <div className='game-container'></div>
-    <Figure/>
-    <WrongLetters />
-    <Word selectedWord={selectedWord} correctLetters={correctLetters}/>
+     <Header />
+      <div className="game-container">
+        <Figure wrongLetters={wrongLetters} />
+        <WrongLetters wrongLetters={wrongLetters} />
+        <Word selectedWord={selectedWord} correctLetters={correctLetters} />
+      </div>
       
     </>
   )
